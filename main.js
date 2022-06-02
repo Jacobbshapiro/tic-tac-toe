@@ -13,14 +13,14 @@ let board, playersTurn
 
 /*----- cached element references -----*/
 const boardEl = document.getElementById('game-board')
-// const playerTurnEl = document.querySelector('section.display > span')
+const resetBtn =document.getElementById('reset')
 let playerTurnEl = document.getElementById('player').innerHTML;
 
 
  /*-- Event Listeners --*/
 boardEl.addEventListener('click', handleBoardClick)
 
- 
+resetBtn.addEventListener('click', resetGame) 
  
  
  /*-- Functions --*/
@@ -42,11 +42,10 @@ boardEl.addEventListener('click', handleBoardClick)
             }
         }
     }
-    
+function resetGame(){
+    location.reload()
+}
+
+
     init();
     
-    // step 1 figure out how to get the ID of what cell was clicked. use event object (evt)
-    // step 2 use that ID to update the boards state at the correct index. ids are like index numbers
-    // step 3 change the null value to the players turn at the correct index
-    // step 4 change the players turn (needs its own function)
-    // step 5 call the render function to update the DOM after the state has been changed(needs its own function)
