@@ -13,7 +13,8 @@ let board, playersTurn
 
 /*----- cached element references -----*/
 const boardEl = document.getElementById('game-board')
-const playerTurnEl = document.querySelector('section.display > span')
+// const playerTurnEl = document.querySelector('section.display > span')
+let playerTurnEl = document.getElementById('player').innerHTML;
 
 
  /*-- Event Listeners --*/
@@ -29,17 +30,18 @@ boardEl.addEventListener('click', handleBoardClick)
     }
     
     function handleBoardClick(evt) {
-
-            document.getElementById(evt.target.id).innerHTML = "X";
-              console.log(evt.target.id);
-          }
-          
-        
-    // function handleClick(evt) {
-    //     board[evt.target.id] = PLAYER_LOGIC[currentPlayer]
-    //     gameboardEl[evt.target.id] = PLAYER_LOGIC[currentPlayer]
-    //     currentPlayer *= -1
-    // }
+        if (board[evt.target.id]===null) {
+            document.getElementById(evt.target.id).innerHTML = playerTurnEl;
+            board[evt.target.id] = true;
+            if (playerTurnEl === "X") {
+                document.getElementById('player').innerHTML = "O";
+                playerTurnEl = "O";
+            } else {
+                document.getElementById('player').innerHTML = "X"
+                playerTurnEl = "X";
+            }
+        }
+    }
     
     init();
     
